@@ -79,3 +79,8 @@ async def to_code(config):
     cg.add(var.set_command_tilt(config[CONF_COMMAND_TILT]))
     cg.add(var.set_poll_interval(config[CONF_POLL_INTERVAL]))
     cg.add(var.set_supports_tilt(config[CONF_SUPPORTS_TILT]))
+
+async def new_cover(config, *args):
+    var = cg.new_Pvariable(config[CONF_ID], *args)
+    await register_cover(var, config)
+    return var
